@@ -1,6 +1,6 @@
 ---
 title: "STAT/MATH 495: Problem Set 01"
-author: "WRITE YOUR NAME HERE"
+author: "Sara Culhane"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output:
   html_document:
@@ -16,6 +16,10 @@ knitr::opts_chunk$set(echo = TRUE, fig.width=8, fig.height=4.5)
 
 # Load packages
 library(tidyverse)
+train <- read_csv("https://rudeboybert.github.io/STAT495/static/Titanic/train.csv")
+test <- read_csv("https://rudeboybert.github.io/STAT495/static/Titanic/test.csv")
+submission <- read_csv("https://rudeboybert.github.io/STAT495/static/Titanic/gender_submission.csv")
+write_csv(submission,"submission.csv")
 ```
 
 
