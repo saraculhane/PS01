@@ -1,7 +1,7 @@
 ---
 title: "STAT/MATH 495: Problem Set 01"
 author: "Sara Culhane"
-date: "`r format(Sys.time(), '%B %d, %Y')`"
+date: "`date: "2017-09-07""
 output:
   html_document:
     toc: true
@@ -18,8 +18,15 @@ knitr::opts_chunk$set(echo = TRUE, fig.width=8, fig.height=4.5)
 library(tidyverse)
 train <- read_csv("https://rudeboybert.github.io/STAT495/static/Titanic/train.csv")
 test <- read_csv("https://rudeboybert.github.io/STAT495/static/Titanic/test.csv")
-submission <- read_csv("https://rudeboybert.github.io/STAT495/static/Titanic/gender_submission.csv")
-write_csv(submission,"submission.csv")
+m1 <- glm(Survived ~ Pclass, data=train)
+pred <- makeFun(m1)
+test$Survived <- round(pred(test$Pclass))
+
+sub <- test[,c(1,12)]
+
+write_csv(sub,"submission.csv")
 ```
+
+
 
 
