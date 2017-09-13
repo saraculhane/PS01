@@ -1,7 +1,7 @@
 ---
 title: "STAT/MATH 495: Problem Set 01"
 author: "Sara Culhane"
-date: "`date: "2017-09-07""
+date: "date:2017-09-07"
 output:
   html_document:
     toc: true
@@ -11,19 +11,22 @@ output:
     smooth_scroll: false
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.width=8, fig.height=4.5)
-
+```{r, setup, include=FALSE}
 # Load packages
 library(tidyverse)
+library(mosaic)
+```
+
+```{r}
 train <- read_csv("https://rudeboybert.github.io/STAT495/static/Titanic/train.csv")
 test <- read_csv("https://rudeboybert.github.io/STAT495/static/Titanic/test.csv")
 m1 <- glm(Survived ~ Pclass, data=train)
 pred <- makeFun(m1)
 test$Survived <- round(pred(test$Pclass))
-
 sub <- test[,c(1,12)]
+```
 
+```{r}
 write_csv(sub,"submission.csv")
 ```
 
